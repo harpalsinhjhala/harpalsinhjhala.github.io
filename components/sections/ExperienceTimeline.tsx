@@ -35,7 +35,7 @@ export function ExperienceTimeline() {
 
   return (
     <section id="experience" aria-labelledby="experience-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
-      <SectionLabel index="04" label="Experience" title="Four years across insurance, brokerage, energy and edtech." id="experience-title" />
+      <SectionLabel index="04" label="Experience" title="Four years across insurance, mortgage servicing, brokerage, energy and edtech." id="experience-title" />
 
       {/* Overview: where each role sits in time */}
       <div aria-hidden className="panel mb-8 hidden px-6 pb-5 pt-4 md:block">

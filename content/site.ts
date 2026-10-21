@@ -16,7 +16,7 @@ export const profile = {
   jobTitle: "Senior Data Analyst",
   // Hero statement: `lead` renders bright, `line` muted beneath it.
   lead: "I engineer the SQL warehouses, pipelines and dashboards that C-suites run on.",
-  line: "Executive BI for Qatar Insurance Group and Adani Green Energy. Enterprise data warehouse for Kunvarji Group. Built with SQL, Power BI, Tableau and Microsoft Fabric, accelerated by AI.",
+  line: "Executive BI for Qatar Insurance Group and Adani Green Energy. SQL validation of US mortgage servicing analytics for Azimuth clients, including Bank of America. An enterprise data warehouse for Kunvarji Group. Accelerated by AI.",
   proof: [
     { value: "2 days → 2 hrs", label: "C-suite reporting" },
     { value: "+15%", label: "brokerage revenue" },
@@ -45,6 +45,11 @@ export const sqlImpact = {
       client: "Qatar Insurance Group",
       delivered: "14 C-suite Power BI reports, Power BI to PowerPoint automation",
       impact: "2 days → 2 hrs",
+    },
+    {
+      client: "Bank of America",
+      delivered: "SQL validation and reconciliation of mortgage servicing dashboards, via Azimuth",
+      impact: "figures verified",
     },
     {
       client: "Kunvarji Group",
@@ -328,9 +333,20 @@ export const enterpriseWork = [
     ],
   },
   {
+    client: "Azimuth · Bank of America",
+    region: "US Mortgage Servicing",
+    points: [
+      "SQL validation of mortgage servicing analytics for Azimuth clients, including Bank of America.",
+      "Reconciled source data against dashboard outputs to confirm every reported figure.",
+    ],
+  },
+  {
     client: "Adani Green Energy",
     region: "India",
-    points: ["5 Power BI reports tracking real-time cash flow and operational KPIs across 1,000+ plants."],
+    points: [
+      "5 Power BI reports tracking real-time cash flow and operational KPIs across 1,000+ plants.",
+      "One semantic model with drill-through views, so KPIs match across every report.",
+    ],
   },
   {
     client: "Ports efficiency model",
@@ -363,15 +379,15 @@ export const experience: Role[] = [
     end: null,
     startLabel: "Mar 2025",
     endLabel: "Present",
-    summary: "Executive BI for MENA insurance, renewable energy and ports clients.",
-    clients: ["Qatar Insurance Group", "Adani Green Energy"],
+    summary: "Executive BI and data validation for MENA insurance, US mortgage servicing, renewable energy and ports clients.",
+    clients: ["Qatar Insurance Group", "Bank of America (via Azimuth)", "Adani Green Energy"],
     highlights: [
-      { result: "14 C-suite reports", detail: "Power BI for the CFO, Senior VP and C-suite at QIC: profitability, claims, loss ratio, disease burden." },
+      { result: "14 C-suite reports", detail: "Power BI for the CFO, Senior VP and C-suite at QIC: profitability, claims, loss ratio, disease burden. Built to UAE data governance standards." },
       { result: "2 days → 2 hrs", detail: "Automated the Power BI to PowerPoint client reporting pipeline, a 90%+ turnaround cut." },
       { result: "1,000+ plants", detail: "5 Power BI reports tracking real-time cash flow and operational KPIs for Adani Green Energy." },
-      { result: "UAE compliant", detail: "BI reporting infrastructure built to UAE data governance and regulatory standards." },
+      { result: "BofA figures verified", detail: "SQL validation and reconciliation of US mortgage servicing dashboards for Azimuth clients, including Bank of America." },
     ],
-    stack: ["SQL", "Power BI", "DAX", "Azure Data Lake", "Excel"],
+    stack: ["SQL", "Power BI", "DAX", "Power Query", "Azure Data Lake"],
     award: "Champion of Customer Trust 2025",
     kind: "work",
   },
@@ -428,10 +444,10 @@ export const skills: { table: string; label: string; columns: string[] }[] = [
   {
     table: "data_engineering",
     label: "Data Engineering",
-    columns: ["SQL", "T-SQL", "SQL Server", "Stored Procedures", "SSIS", "ETL/ELT Pipelines", "Dimensional Modelling", "Data Warehousing"],
+    columns: ["SQL", "T-SQL", "SQL Server", "Stored Procedures", "SSIS", "ETL/ELT Pipelines", "Star Schema Modelling", "Data Warehousing", "Data Validation"],
   },
   { table: "cloud", label: "Cloud", columns: ["Microsoft Fabric", "OneLake", "Azure Data Factory", "Azure Data Lake"] },
-  { table: "ai_automation", label: "AI and Automation", columns: ["Claude Code", "AI assisted analytics engineering", "Python", "Power Automate"] },
+  { table: "ai_automation", label: "AI and Automation", columns: ["Claude Code", "AI assisted analytics engineering", "Python", "Power Automate", "Git"] },
   {
     table: "business",
     label: "Business",
@@ -439,7 +455,7 @@ export const skills: { table: string; label: string; columns: string[] }[] = [
   },
 ];
 
-export const domains = ["Insurance", "Stock Brokerage", "Real Estate", "Banking", "Energy"];
+export const domains = ["Insurance", "Mortgage Servicing", "Stock Brokerage", "Real Estate", "Banking", "Energy"];
 
 export const aiWorkflow = [
   { step: "Direct", text: "I define the business question and the data model." },
