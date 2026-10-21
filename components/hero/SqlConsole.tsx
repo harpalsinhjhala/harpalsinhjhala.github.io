@@ -48,23 +48,27 @@ export function SqlConsole() {
       </div>
 
       {/* Screen readers get the finished result as a real table. */}
-      <table className="sr-only">
-        <caption>Career impact, as a query result</caption>
+      <div className="sr-only">
+      <table>
+        <caption>Delivered work by client, as a query result</caption>
         <thead>
           <tr>
-            <th scope="col">metric</th>
-            <th scope="col">value</th>
+            <th scope="col">client</th>
+            <th scope="col">delivered</th>
+            <th scope="col">impact</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((r) => (
-            <tr key={r.metric}>
-              <td>{r.metric}</td>
-              <td>{r.value}</td>
+            <tr key={r.client}>
+              <td>{r.client}</td>
+              <td>{r.delivered}</td>
+              <td>{r.impact}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
 
       <div aria-hidden className="px-4 pb-4 pt-3.5">
         <div className="relative">
@@ -80,18 +84,24 @@ export function SqlConsole() {
         </div>
 
         <div className="mt-4 overflow-hidden rounded-md border border-line">
-          <div className="grid grid-cols-[1fr_auto] border-b border-line bg-panel-2 px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-faint">
-            <span>metric</span>
-            <span>value</span>
+          <div className="grid grid-cols-[1fr_auto] gap-4 border-b border-line bg-panel-2 px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-faint sm:grid-cols-[minmax(0,10.5rem)_1fr_auto]">
+            <span>client</span>
+            <span className="hidden sm:block">delivered</span>
+            <span className="text-right">impact</span>
           </div>
           {rows.map((r, i) => (
             <div
-              key={r.metric}
-              className="grid grid-cols-[1fr_auto] gap-4 border-b border-line px-3 py-1.5 transition-[opacity,transform] duration-300 last:border-b-0"
+              key={r.client}
+              className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-0.5 border-b border-line px-3 py-2 transition-[opacity,transform] duration-300 last:border-b-0 sm:grid-cols-[minmax(0,10.5rem)_1fr_auto] sm:items-baseline"
               style={{ opacity: i < shown ? 1 : 0, transform: i < shown ? "none" : "translateY(4px)" }}
             >
-              <span className="truncate text-muted">{r.metric}</span>
-              <span className="tnum text-right font-medium text-pos">{r.value}</span>
+              <span className="font-medium text-fg">{r.client}</span>
+              <span className="col-span-2 row-start-2 font-sans text-[12.5px] leading-snug text-muted sm:col-span-1 sm:row-start-auto">
+                {r.delivered}
+              </span>
+              <span className="tnum col-start-2 row-start-1 whitespace-nowrap text-right font-medium text-pos sm:col-start-auto sm:row-start-auto">
+                {r.impact}
+              </span>
             </div>
           ))}
         </div>

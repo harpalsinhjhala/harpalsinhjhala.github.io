@@ -30,14 +30,14 @@ const html = `<!doctype html><html><head>
   <div class="left">
     <div class="chip mono" style="letter-spacing:.06em;text-transform:none"><span class="dot"></span>Ahmedabad, India · Open to UAE relocation</div>
     <h1>Harpal Sinh<br>Jhala</h1>
-    <div class="title mono">AI Driven Analytics Engineer · BI Developer</div>
+    <div class="title mono">AI Driven Analytics &amp; Data Engineer · BI</div>
     <div class="kpis">
       <div class="kpi"><b>90%+</b><span>reporting time cut</span></div>
       <div class="kpi"><b>14</b><span>C-suite reports, QIC</span></div>
       <div class="kpi"><b>30%</b><span>revenue found in NPAs</span></div>
     </div>
   </div>
-  <div class="photo"><div class="bar mono"><span style="color:#94a0b2">● live</span><span>power bi · sql · fabric</span></div>
+  <div class="photo"><div class="bar mono"><span style="color:#94a0b2">● live</span><span>sql · power bi · tableau</span></div>
     <img src="data:image/webp;base64,${photo}"></div>
 </div>
 <div class="accent"></div>

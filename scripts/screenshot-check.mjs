@@ -17,7 +17,8 @@ const errors = [];
 
 for (const theme of themes) {
   for (const w of widths) {
-    const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1 });
+    // Reduced motion: scroll-driven reveals do not run in full-page captures, so render every section statically.
+    const ctx = await browser.newContext({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1, reducedMotion: "reduce" });
     await ctx.addInitScript((t) => localStorage.setItem("theme", t), theme);
     const page = await ctx.newPage();
     page.on("console", (m) => m.type() === "error" && errors.push(`${w} ${theme}: ${m.text()}`));

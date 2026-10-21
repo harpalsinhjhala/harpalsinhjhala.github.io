@@ -152,8 +152,11 @@ body {
   }
 }
 
-.pulse-dot {
-  position: relative;
+/* In the components layer so utilities such as `absolute` override the default position. */
+@layer components {
+  .pulse-dot {
+    position: relative;
+  }
 }
 .pulse-dot::after {
   content: "";

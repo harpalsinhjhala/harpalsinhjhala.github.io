@@ -46,7 +46,7 @@ const personLd = {
   address: { "@type": "PostalAddress", addressLocality: "Ahmedabad", addressCountry: "IN" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Gujarat Technological University" },
   worksFor: { "@type": "Organization", name: "WhiteBlue Cloud Services" },
-  knowsAbout: ["Power BI", "DAX", "SQL", "Microsoft Fabric", "Data Warehousing", "Analytics Engineering", "Insurance Analytics"],
+  knowsAbout: ["Power BI", "Tableau", "DAX", "SQL", "Data Engineering", "ETL", "Microsoft Fabric", "Data Warehousing", "Analytics Engineering", "Insurance Analytics"],
   sameAs: [profile.linkedin, profile.github],
 };
 

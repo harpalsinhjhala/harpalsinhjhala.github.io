@@ -12,28 +12,60 @@ export const site = {
 export const profile = {
   name: "Harpal Sinh Jhala",
   initials: "HJ",
-  title: "AI Driven Analytics Engineer · BI Developer",
+  title: "AI Driven Analytics & Data Engineer · BI Developer",
   jobTitle: "Senior Data Analyst",
-  line: "I turn messy financial data into decisions CFOs act on. Power BI, SQL, Microsoft Fabric, accelerated by AI.",
-  tags: ["BFSI", "Insurance", "MENA", "Microsoft Fabric", "Power BI"],
+  // Hero statement: `lead` renders bright, `line` muted beneath it.
+  lead: "I engineer the SQL warehouses, pipelines and dashboards that C-suites run on.",
+  line: "Executive BI for Qatar Insurance Group and Adani Green Energy. Enterprise data warehouse for Kunvarji Group. Built with SQL, Power BI, Tableau and Microsoft Fabric, accelerated by AI.",
+  proof: [
+    { value: "2 days → 2 hrs", label: "C-suite reporting" },
+    { value: "+15%", label: "brokerage revenue" },
+    { value: "1,000+", label: "plants tracked" },
+  ],
+  tags: ["SQL", "Data Engineering", "Power BI", "Tableau", "Microsoft Fabric", "Azure", "BFSI", "MENA"],
   location: "Ahmedabad, India · Open to UAE relocation and remote",
   email: "harpalsinhjhala13@gmail.com",
   linkedin: "https://www.linkedin.com/in/harpal-sinh-jhala/",
   github: "https://github.com/harpalsinhjhala13",
   openTo: "Open to Senior BI, Analytics Engineering and Data Analyst roles in UAE, India remote and Ahmedabad.",
-  heroImage: { src: "/images/hero", alt: "Harpal Sinh Jhala outside a glass office building", width: 1500, height: 2000 },
+  heroImage: {
+    src: "/images/hero",
+    alt: "Illustrated portrait of Harpal Sinh Jhala holding a laptop of dashboards and a coffee, in front of SQL and financial charts",
+    width: 1024,
+    height: 1280,
+  },
   aboutImage: { src: "/images/about", alt: "Harpal Sinh Jhala on a clifftop above a beach in Goa", width: 1500, height: 2000 },
 };
 
-// Rows returned by the hero SQL console.
+// Rows returned by the hero SQL console: what was delivered, to whom, and what it changed.
 export const sqlImpact = {
-  query: "SELECT metric, value FROM harpal_jhala.impact ORDER BY value DESC;",
+  query: "SELECT client, delivered, impact FROM harpal_jhala.deliveries ORDER BY impact DESC;",
   rows: [
-    { metric: "reporting_tat_reduction", value: "90%" },
-    { metric: "npa_revenue_identified", value: "30%" },
-    { metric: "brokerage_revenue_lift", value: "15%" },
-    { metric: "executive_reports_built", value: "14" },
-    { metric: "years_experience", value: "4+" },
+    {
+      client: "Qatar Insurance Group",
+      delivered: "14 C-suite Power BI reports, Power BI to PowerPoint automation",
+      impact: "2 days → 2 hrs",
+    },
+    {
+      client: "Kunvarji Group",
+      delivered: "Enterprise SQL Server warehouse, ETL, inactive account analytics",
+      impact: "+15% revenue",
+    },
+    {
+      client: "Kunvarji · Real Estate",
+      delivered: "Profitability and client segmentation model",
+      impact: "30% NPA revenue found",
+    },
+    {
+      client: "Adani Green Energy",
+      delivered: "5 Power BI reports on cash flow and operational KPIs",
+      impact: "1,000+ plants",
+    },
+    {
+      client: "BYJU'S",
+      delivered: "Automated Power BI pipelines, SQL data quality for ERP",
+      impact: "manual effort cut",
+    },
   ],
 };
 
@@ -314,7 +346,11 @@ export type Role = {
   end: string | null; // null = present
   startLabel: string;
   endLabel: string;
-  points: string[];
+  summary: string; // one line: what the job was
+  clients?: string[];
+  // Each highlight leads with its result so the eye lands on the number first.
+  highlights: { result: string; detail: string }[];
+  stack: string[];
   award?: string;
   kind: "work" | "education";
 };
@@ -327,7 +363,15 @@ export const experience: Role[] = [
     end: null,
     startLabel: "Mar 2025",
     endLabel: "Present",
-    points: ["Clients: Qatar Insurance Group, Adani Green Energy.", "Executive BI for MENA insurance, energy and ports."],
+    summary: "Executive BI for MENA insurance, renewable energy and ports clients.",
+    clients: ["Qatar Insurance Group", "Adani Green Energy"],
+    highlights: [
+      { result: "14 C-suite reports", detail: "Power BI for the CFO, Senior VP and C-suite at QIC: profitability, claims, loss ratio, disease burden." },
+      { result: "2 days → 2 hrs", detail: "Automated the Power BI to PowerPoint client reporting pipeline, a 90%+ turnaround cut." },
+      { result: "1,000+ plants", detail: "5 Power BI reports tracking real-time cash flow and operational KPIs for Adani Green Energy." },
+      { result: "UAE compliant", detail: "BI reporting infrastructure built to UAE data governance and regulatory standards." },
+    ],
+    stack: ["SQL", "Power BI", "DAX", "Azure Data Lake", "Excel"],
     award: "Champion of Customer Trust 2025",
     kind: "work",
   },
@@ -338,10 +382,14 @@ export const experience: Role[] = [
     end: "2025-03",
     startLabel: "Feb 2024",
     endLabel: "Mar 2025",
-    points: [
-      "Led architecture of a master enterprise data warehouse across stock brokerage, real estate and insurance.",
-      "SQL Server, stored procedures, ETL. Led a team of 3.",
+    summary: "Data warehouse and BFSI reporting across stock brokerage, real estate and insurance.",
+    highlights: [
+      { result: "Master EDW", detail: "Led architecture of the enterprise data warehouse: tables, views, stored procedures and ETL on SQL Server." },
+      { result: "+15% revenue", detail: "Inactive account analytics that lifted brokerage revenue." },
+      { result: "30% in NPAs", detail: "Reporting that showed 30% of real estate revenue was locked in non-performing assets." },
+      { result: "Team of 3", detail: "Led analysts through requirements, sprint planning and Power BI delivery." },
     ],
+    stack: ["SQL Server", "SSMS", "ETL", "Power BI", "DAX"],
     award: "Star Performer 2024",
     kind: "work",
   },
@@ -352,28 +400,35 @@ export const experience: Role[] = [
     end: "2023-09",
     startLabel: "Sep 2022",
     endLabel: "Sep 2023",
-    points: ["Power BI reporting and automated pipelines for Academics.", "ERP data quality through SQL."],
+    summary: "Reporting and data quality for the Academics department.",
+    highlights: [
+      { result: "Automated", detail: "Power BI reports and reporting pipelines that replaced manual reporting across business units." },
+      { result: "Clean ERP data", detail: "SQL integration, transformation and validation for ERP data." },
+    ],
+    stack: ["SQL", "Power BI", "Excel"],
     kind: "work",
   },
   {
     role: "B.E. Electrical Engineering",
-    org: "GTU",
+    org: "Gujarat Technological University",
     start: "2018-08",
     end: "2022-06",
     startLabel: "2018",
     endLabel: "2022",
-    points: [],
+    summary: "Bachelor of Engineering.",
+    highlights: [],
+    stack: [],
     kind: "education",
   },
 ];
 
 // Rendered as tables in a schema explorer. No proficiency scores on purpose.
 export const skills: { table: string; label: string; columns: string[] }[] = [
-  { table: "bi_visualisation", label: "BI and Visualisation", columns: ["Power BI", "DAX", "Power Query (M)", "Semantic Modelling", "Excel"] },
+  { table: "bi_visualisation", label: "BI and Visualisation", columns: ["Power BI", "Tableau", "DAX", "Power Query (M)", "Semantic Modelling", "Excel"] },
   {
     table: "data_engineering",
     label: "Data Engineering",
-    columns: ["SQL", "T-SQL", "SQL Server", "SSIS", "ETL/ELT", "Dimensional Modelling", "Data Warehousing"],
+    columns: ["SQL", "T-SQL", "SQL Server", "Stored Procedures", "SSIS", "ETL/ELT Pipelines", "Dimensional Modelling", "Data Warehousing"],
   },
   { table: "cloud", label: "Cloud", columns: ["Microsoft Fabric", "OneLake", "Azure Data Factory", "Azure Data Lake"] },
   { table: "ai_automation", label: "AI and Automation", columns: ["Claude Code", "AI assisted analytics engineering", "Python", "Power Automate"] },

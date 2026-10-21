@@ -21,9 +21,21 @@ export function Hero() {
             {profile.name}
           </h1>
           <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.14em] text-accent-ink sm:text-sm">{profile.title}</p>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">{profile.line}</p>
+          <p className="mt-6 max-w-2xl font-display text-2xl font-medium leading-snug tracking-tight text-fg sm:text-[1.9rem]">
+            {profile.lead}
+          </p>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{profile.line}</p>
 
-          <ul className="mt-6 flex flex-wrap gap-2" aria-label="Focus areas">
+          <dl className="mt-6 grid max-w-xl grid-cols-[1.35fr_1fr_1fr] divide-x divide-line overflow-hidden rounded-lg border border-line bg-panel">
+            {profile.proof.map((p) => (
+              <div key={p.label} className="flex flex-col-reverse px-3 py-2.5 sm:px-4">
+                <dt className="mt-0.5 font-mono text-[10px] uppercase leading-tight tracking-[0.1em] text-faint">{p.label}</dt>
+                <dd className="tnum whitespace-nowrap font-display text-[15px] font-medium text-pos sm:text-xl">{p.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Skills and focus areas">
             {profile.tags.map((t) => (
               <li key={t} className="rounded-md border border-line px-2.5 py-1 font-mono text-[11px] text-muted">
                 {t}
