@@ -1,33 +1,20 @@
 import { hierarchy, pack, type HierarchyCircularNode } from "d3-hierarchy";
-import { domains, skills } from "@/content/site";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SkillsOrbit } from "./SkillsOrbit";
+import { fitLabel, groups, maxCount, short, type Group } from "./skillsData";
 
 // Skills as circle-packing small multiples, laid out at build time (no client JS).
 // Each group is a circle whose area is proportional to its skill count; every skill inside gets equal
 // weight, so nothing reads as a proficiency score. Identity comes from direct labels; colour only
 // separates skill groups (neutral) from domains (accent).
 
-type Group = { id: string; label: string; items: string[]; domain?: boolean };
 type Leaf = { name: string };
 
 const VIEW = 372; // every group shares one viewBox, so all circles render at the same scale
 const MAX_D = 346;
 
-const groups: Group[] = [
-  ...skills.map((s) => ({ id: s.table, label: s.label.replace(" and ", " & "), items: s.columns })),
-  { id: "dim_domain", label: "Domains", items: domains, domain: true },
-];
 // Biggest first; domains, the shared dimension, close the grid.
 const ordered = [...groups.filter((g) => !g.domain).sort((a, b) => b.items.length - a.items.length), ...groups.filter((g) => g.domain)];
-const maxCount = Math.max(...groups.map((g) => g.items.length));
-
-// Shorter names for the bubbles only; the full name stays in the tooltip and the screen-reader list.
-const short: Record<string, string> = {
-  "AI assisted analytics engineering": "AI-assisted analytics",
-  "Financial and MIS Reporting": "Financial & MIS reporting",
-  "Star Schema Modelling": "Star schema",
-  "ETL/ELT Pipelines": "ETL / ELT",
-};
 
 function layoutGroup(g: Group) {
   const d = MAX_D * Math.sqrt(g.items.length / maxCount);
@@ -35,28 +22,6 @@ function layoutGroup(g: Group) {
   const laid = pack<{ children?: Leaf[] } & Partial<Leaf>>().size([d, d]).padding(4)(root);
   const off = (VIEW - d) / 2;
   return { d, off, leaves: laid.leaves() as HierarchyCircularNode<Leaf>[] };
-}
-
-// Pick the line break that gives the largest font that still fits inside the circle.
-function fitLabel(label: string, r: number, max = 13.5) {
-  const words = label.split(" ");
-  let best = { lines: [label], size: 0 };
-  for (let n = 1; n <= Math.min(3, words.length); n++) {
-    const per = Math.ceil(label.length / n);
-    const lines: string[] = [];
-    let cur = "";
-    for (const w of words) {
-      if (cur && (cur + " " + w).length > per && lines.length < n - 1) {
-        lines.push(cur);
-        cur = w;
-      } else cur = cur ? `${cur} ${w}` : w;
-    }
-    lines.push(cur);
-    const longest = Math.max(...lines.map((l) => l.length));
-    const size = Math.min(max, (2 * r * 0.86) / (longest * 0.55), (2 * r * 0.7) / (lines.length * 1.2));
-    if (size > best.size) best = { lines, size };
-  }
-  return best;
 }
 
 const layouts = new Map(ordered.map((g) => [g.id, layoutGroup(g)]));
@@ -131,7 +96,13 @@ export function SkillsPack() {
         ))}
       </div>
 
-      <ul className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3" aria-hidden>
+      {/* Desktop: the core group in the centre with the others around it. */}
+      <div className="reveal mx-auto hidden max-w-[1000px] lg:block" aria-hidden>
+        <SkillsOrbit />
+      </div>
+
+      {/* Tablet and phone: one circle per group, big enough to read. */}
+      <ul className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:hidden" aria-hidden>
         {ordered.map((g) => (
           <li key={g.id} className="reveal mx-auto w-full max-w-[372px]">
             <GroupCircle g={g} />

@@ -21,8 +21,8 @@ export function Hero() {
             {profile.name}
           </h1>
           <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.14em] text-accent-ink sm:text-sm">{profile.title}</p>
-          <p className="mt-6 max-w-2xl font-display text-[1.95rem] font-medium leading-[1.1] tracking-[-0.02em] text-fg sm:text-[2.6rem]">
-            {profile.lead}
+          <p className="mt-6 max-w-2xl font-display text-[1.75rem] font-medium leading-[1.12] tracking-[-0.02em] text-fg sm:text-[2.35rem]">
+            {profile.lead} <span className="whitespace-nowrap text-accent-ink">{profile.leadAccent}</span>
           </p>
 
           {/* The stack as a pipeline; each stage lights up in turn (.pipe-stage in globals.css). */}
@@ -49,22 +49,29 @@ export function Hero() {
 
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{profile.line}</p>
 
-          <dl className="mt-6 grid max-w-xl grid-cols-[1.35fr_1fr_1fr] divide-x divide-line overflow-hidden rounded-lg border border-line bg-panel">
+          {/* Proof: each number says what it is and who it was for. */}
+          <ul className="mt-6 grid max-w-2xl grid-cols-1 divide-y divide-line overflow-hidden rounded-lg border border-line bg-panel sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {profile.proof.map((p) => (
-              <div key={p.label} className="flex flex-col-reverse px-3 py-2.5 sm:px-4">
-                <dt className="mt-0.5 font-mono text-[10px] uppercase leading-tight tracking-[0.1em] text-faint">{p.label}</dt>
-                <dd className="tnum whitespace-nowrap font-display text-[15px] font-medium text-pos sm:text-xl">{p.value}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Skills and focus areas">
-            {profile.tags.map((t) => (
-              <li key={t} className="rounded-md border border-line px-2.5 py-1 font-mono text-[11px] text-muted">
-                {t}
+              <li key={p.label} className="flex items-baseline justify-between gap-3 px-4 py-3 sm:flex-col sm:justify-start sm:gap-0">
+                <p className="tnum whitespace-nowrap font-display text-lg font-medium text-pos sm:text-xl">{p.value}</p>
+                <p className="text-right sm:mt-1 sm:text-left">
+                  <span className="block font-mono text-[10px] uppercase leading-tight tracking-[0.1em] text-muted">{p.label}</span>
+                  <span className="mt-0.5 block text-[13px] leading-tight text-fg">{p.context}</span>
+                </p>
               </li>
             ))}
           </ul>
+
+          <div className="mt-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-faint">Delivered for</p>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {profile.deliveredFor.map((c) => (
+                <li key={c} className="rounded-md border border-line-strong bg-panel px-2.5 py-1 text-[13px] font-medium text-fg">
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a

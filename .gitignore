@@ -8,3 +8,4 @@ shots/
 .lighthouse/
 source-images/
 .lighthouse-*.json
+preview/

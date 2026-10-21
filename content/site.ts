@@ -14,14 +14,17 @@ export const profile = {
   initials: "HJ",
   title: "AI Driven Analytics & Data Engineer · BI Developer",
   jobTitle: "Senior Data Analyst",
-  // Hero statement: `lead` renders bright, `pipeline` as a lit-up stack chain, `line` muted beneath.
-  lead: "Raw data in. Boardroom decisions out.",
+  // Hero statement: `lead` renders bright (`leadAccent` in amber), `pipeline` as a lit-up stack chain,
+  // `line` muted beneath, then the `deliveredFor` client row.
+  lead: "Data doesn't lie. Most businesses just don't know how to read it.",
+  leadAccent: "I fix that.",
   pipeline: ["SQL", "Fabric", "Power BI", "Tableau", "AI", "C-suite decisions"],
-  line: "Executive BI for Qatar Insurance Group and Adani Green Energy. SQL validation of US mortgage servicing analytics for Azimuth clients, including Bank of America. An enterprise data warehouse for Kunvarji Group. Accelerated by AI.",
+  line: "I build the warehouses, data models and dashboards that CFOs and C-suites make decisions on, with AI speeding up every step and me checking every number.",
+  deliveredFor: ["Qatar Insurance Group", "Bank of America (via Azimuth)", "Adani Green Energy", "Kunvarji Group", "BYJU'S"],
   proof: [
-    { value: "2 days → 2 hrs", label: "C-suite reporting" },
-    { value: "+15%", label: "brokerage revenue" },
-    { value: "1,000+", label: "plants tracked" },
+    { value: "2 days → 2 hrs", label: "Reporting turnaround", context: "Qatar Insurance Group" },
+    { value: "+15%", label: "Brokerage revenue", context: "Kunvarji Group" },
+    { value: "1,000+", label: "Plants on one view", context: "Adani Green Energy" },
   ],
   tags: ["Data Engineering", "Azure", "Python", "BFSI", "Insurance", "MENA"],
   location: "Ahmedabad, India · Open to UAE relocation and remote",
