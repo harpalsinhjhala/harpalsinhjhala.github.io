@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="dark"] {
+  --bg: #0a0e14;
+  --bg-elev: #0f141c;
+  --panel: #111823;
+  --panel-2: #151d2a;
+  --border: #1f2836;
+  --border-strong: #2c3747;
+  --fg: #e6eaf0;
+  --muted: #94a0b2;
+  --faint: #808b9e;
+  --accent: #f2c811;
+  --accent-ink: #f2c811;
+  --accent-fg: #0a0e14;
+  --accent-soft: rgb(242 200 17 / 0.12);
+  --pos: #34d399;
+  --neg: #fb7185;
+  --grid: rgb(148 160 178 / 0.07);
+  --shadow: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 20px 40px -24px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f6f7f9;
+  --bg-elev: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #f1f3f6;
+  --border: #e1e5eb;
+  --border-strong: #cdd3dc;
+  --fg: #0b1220;
+  --muted: #4f5a6b;
+  --faint: #626c7d;
+  --accent: #f2c811;
+  --accent-ink: #7a5d00;
+  --accent-fg: #0b1220;
+  --accent-soft: rgb(242 200 17 / 0.18);
+  --pos: #047857;
+  --neg: #be123c;
+  --grid: rgb(11 18 32 / 0.06);
+  --shadow: 0 1px 2px rgb(11 18 32 / 0.04), 0 16px 32px -24px rgb(11 18 32 / 0.25);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Dot grid + faint chart gridlines behind everything */
+.bg-texture {
+  background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Grain overlay, desktop only: a fixed full-screen layer costs too much paint on phones. */
+[data-theme="light"] .noise::after {
+  opacity: 0.025;
+}
+@media (min-width: 768px) {
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.04;
+  background-image: url("/noise.png");
+  background-size: 64px 64px;
+}
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.glass {
+  background: color-mix(in oklab, var(--bg) 94%, transparent);
+}
+@media (min-width: 768px) {
+  .glass {
+    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  vertical-align: -0.18em;
+  background: var(--accent);
+  animation: blink 1.05s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: inherit;
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--panel-2) 0%, var(--border) 50%, var(--panel-2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.flow-line {
+  stroke-dasharray: 4 6;
+  animation: flow 1.2s linear infinite;
+}
+@keyframes flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Card drift set by components/ui/Magnetic.tsx */
+.magnetic {
+  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scroll-driven entrances. Runs on the compositor; unsupported browsers show content as-is. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .draw-line {
+      stroke-dasharray: 1;
+      animation: draw-line linear both;
+      animation-timeline: view();
+      animation-range: entry 40% cover 40%;
+    }
+    .draw-fade {
+      animation: fade-in linear both;
+      animation-timeline: view();
+      animation-range: entry 70% cover 40%;
+    }
+    .draw-bar {
+      transform-origin: left;
+      animation: grow-x linear both;
+      animation-timeline: view();
+      animation-range: entry 40% cover 40%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic {
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
