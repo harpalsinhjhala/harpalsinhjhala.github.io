@@ -7,7 +7,7 @@ import { Sparkline } from "./Sparkline";
 export function ImpactStrip() {
   return (
     <section id="impact" aria-labelledby="impact-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
-      <SectionLabel index="02" label="Impact" title="Outcomes, measured." id="impact-title" />
+      <SectionLabel index="03" label="Impact" title="Outcomes, measured." id="impact-title" />
       <ul className="grid gap-px overflow-hidden rounded-[14px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
         {kpis.map((k, i) => (
           <Reveal as="li" key={k.label} className="bg-panel">

@@ -165,6 +165,51 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "car-theft-analytics",
+    title: "Car Theft Analytics + AI",
+    domain: "Public Safety · AI-built report",
+    stack: ["Power BI", "DAX", "Power Query", "Claude Code"],
+    outcome:
+      "New Zealand vehicle theft analysis on 4,553 records. I designed the star schema and 28 DAX measures. Claude Code built the 5-page report and theme under my direction.",
+    embed: {
+      kind: "powerbi",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiZjk1Zjk0NWUtMmUxYS00OGY4LTkxMmEtNGRjNzdjYmJjM2JhIiwidCI6IjQ5ZTI0NzNlLWI1OWQtNGE0ZS05NmU5LTdmYjQ3NDY3MjNhMyJ9",
+      title: "Car Theft Analytics Power BI report",
+    },
+    repo: "https://github.com/harpalsinhjhala13/AI-Car-Theft-Analytics",
+    preview: "/projects/car-theft",
+    previewSize: [1920, 1080],
+    previewAlt: "Car theft analytics overview page with KPI cards, daily trend and region treemap",
+    caseStudy: {
+      problem:
+        "How many vehicles were stolen in New Zealand, where, which vehicles, and when? And can AI build the report layer while a BI developer owns the model?",
+      data: [
+        "Three CSVs from NZ Police stolen vehicle records: 4,553 thefts, 138 makes, 16 regions with population and density.",
+        "Period: 7 Oct 2021 to 6 Apr 2022.",
+        "Cleaned in Power Query: unknown makes mapped, blanks standardised, population text converted, dates parsed.",
+      ],
+      approach: [
+        "Me: star schema with 1 fact and 4 dimensions, 28 DAX measures in 6 display folders (time intelligence, rates per 100K, rankings), optimisation rules.",
+        "Claude Code: 5 storytelling pages, custom theme, page navigation, then validated each page from screenshots.",
+        "I reviewed every round and pushed back until navigation, titles and colour worked.",
+      ],
+      flow: [
+        { label: "3 CSV files", detail: "NZ Police records" },
+        { label: "Power Query", detail: "Cleaning" },
+        { label: "Star schema", detail: "1 fact · 4 dims" },
+        { label: "28 DAX measures", detail: "6 folders" },
+        { label: "5-page report", detail: "Built by Claude Code" },
+      ],
+      flowNote: "I own the model. Claude Code built the report pages under review.",
+      impact: [
+        "Monthly thefts more than doubled, from 464 (Oct 2021) to 1,053 (Mar 2022).",
+        "Auckland has 36% of thefts, but Gisborne has the highest rate at 338 per 100K.",
+        "Only 4.2% of stolen vehicles are luxury makes. Toyota, stationwagons and silver cars lead.",
+      ],
+      tools: ["Power BI Desktop", "PBIP / TMDL", "Power Query (M)", "DAX", "Claude Code"],
+    },
+  },
+  {
     slug: "real-estate-brokerage",
     title: "Real Estate Brokerage Analytics",
     domain: "Real Estate",
@@ -240,51 +285,6 @@ export const projects: Project[] = [
         "Relationship managers prioritised advisory effort using active and passive behaviour tracking.",
       ],
       tools: ["SQL", "Power BI", "DAX"],
-    },
-  },
-  {
-    slug: "car-theft-analytics",
-    title: "Car Theft Analytics + AI",
-    domain: "Public Safety · AI-built report",
-    stack: ["Power BI", "DAX", "Power Query", "Claude Code"],
-    outcome:
-      "New Zealand vehicle theft analysis on 4,553 records. I designed the star schema and 28 DAX measures. Claude Code built the 5-page report and theme under my direction.",
-    embed: {
-      kind: "powerbi",
-      url: "https://app.powerbi.com/view?r=eyJrIjoiZjk1Zjk0NWUtMmUxYS00OGY4LTkxMmEtNGRjNzdjYmJjM2JhIiwidCI6IjQ5ZTI0NzNlLWI1OWQtNGE0ZS05NmU5LTdmYjQ3NDY3MjNhMyJ9",
-      title: "Car Theft Analytics Power BI report",
-    },
-    repo: "https://github.com/harpalsinhjhala13/AI-Car-Theft-Analytics",
-    preview: "/projects/car-theft",
-    previewSize: [1920, 1080],
-    previewAlt: "Car theft analytics overview page with KPI cards, daily trend and region treemap",
-    caseStudy: {
-      problem:
-        "How many vehicles were stolen in New Zealand, where, which vehicles, and when? And can AI build the report layer while a BI developer owns the model?",
-      data: [
-        "Three CSVs from NZ Police stolen vehicle records: 4,553 thefts, 138 makes, 16 regions with population and density.",
-        "Period: 7 Oct 2021 to 6 Apr 2022.",
-        "Cleaned in Power Query: unknown makes mapped, blanks standardised, population text converted, dates parsed.",
-      ],
-      approach: [
-        "Me: star schema with 1 fact and 4 dimensions, 28 DAX measures in 6 display folders (time intelligence, rates per 100K, rankings), optimisation rules.",
-        "Claude Code: 5 storytelling pages, custom theme, page navigation, then validated each page from screenshots.",
-        "I reviewed every round and pushed back until navigation, titles and colour worked.",
-      ],
-      flow: [
-        { label: "3 CSV files", detail: "NZ Police records" },
-        { label: "Power Query", detail: "Cleaning" },
-        { label: "Star schema", detail: "1 fact · 4 dims" },
-        { label: "28 DAX measures", detail: "6 folders" },
-        { label: "5-page report", detail: "Built by Claude Code" },
-      ],
-      flowNote: "I own the model. Claude Code built the report pages under review.",
-      impact: [
-        "Monthly thefts more than doubled, from 464 (Oct 2021) to 1,053 (Mar 2022).",
-        "Auckland has 36% of thefts, but Gisborne has the highest rate at 338 per 100K.",
-        "Only 4.2% of stolen vehicles are luxury makes. Toyota, stationwagons and silver cars lead.",
-      ],
-      tools: ["Power BI Desktop", "PBIP / TMDL", "Power Query (M)", "DAX", "Claude Code"],
     },
   },
   {
@@ -484,8 +484,8 @@ export const awards = [
 
 export const nav = [
   { href: "#skills", label: "Skills" },
-  { href: "#impact", label: "Impact" },
   { href: "#projects", label: "Projects" },
+  { href: "#impact", label: "Impact" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];

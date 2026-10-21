@@ -17,8 +17,8 @@ export default function Home() {
       <main id="main">
         <Hero />
         <SkillsPack />
-        <ImpactStrip />
         <ProjectGrid />
+        <ImpactStrip />
         <EnterpriseWork />
         <ExperienceTimeline />
         <AiWorkflow />
