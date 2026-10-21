@@ -195,6 +195,36 @@ body {
   }
 }
 
+/* Skills circle pack: a bubble lights up on hover. */
+.pack-leaf circle {
+  transition: stroke 0.2s ease, fill 0.2s ease;
+}
+.pack-leaf:hover circle {
+  stroke: var(--accent);
+  fill: var(--accent-soft);
+}
+
+/* Hero pipeline: a highlight runs down the stack chain, stage by stage. */
+@media (prefers-reduced-motion: no-preference) {
+  .pipe-stage:not(.bg-accent) {
+    animation: pipe-pulse 3.6s ease-in-out infinite;
+  }
+}
+@keyframes pipe-pulse {
+  0%,
+  30%,
+  100% {
+    border-color: var(--border-strong);
+    color: var(--muted);
+    background-color: transparent;
+  }
+  10% {
+    border-color: var(--accent);
+    color: var(--fg);
+    background-color: var(--accent-soft);
+  }
+}
+
 /* Card drift set by components/ui/Magnetic.tsx */
 .magnetic {
   transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0);

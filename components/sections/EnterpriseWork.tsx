@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 export function EnterpriseWork() {
   return (
     <section aria-labelledby="enterprise-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
-      <SectionLabel index="03" label="Enterprise Work" title="Insurance, banking, energy and ports. Under NDA." id="enterprise-title" />
+      <SectionLabel index="04" label="Enterprise Work" title="Insurance, banking, energy and ports. Under NDA." id="enterprise-title" />
       <div className="panel overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-panel-2 px-5 py-3">
           <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">

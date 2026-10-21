@@ -21,10 +21,33 @@ export function Hero() {
             {profile.name}
           </h1>
           <p className="mt-4 font-mono text-[12px] uppercase tracking-[0.14em] text-accent-ink sm:text-sm">{profile.title}</p>
-          <p className="mt-6 max-w-2xl font-display text-2xl font-medium leading-snug tracking-tight text-fg sm:text-[1.9rem]">
+          <p className="mt-6 max-w-2xl font-display text-[1.95rem] font-medium leading-[1.1] tracking-[-0.02em] text-fg sm:text-[2.6rem]">
             {profile.lead}
           </p>
-          <p className="mt-3 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{profile.line}</p>
+
+          {/* The stack as a pipeline; each stage lights up in turn (.pipe-stage in globals.css). */}
+          <ol className="mt-5 flex flex-wrap items-center gap-x-1.5 gap-y-2 font-mono text-[12px] sm:text-[13px]" aria-label="How I work: from SQL to C-suite decisions">
+            {profile.pipeline.map((stage, i) => {
+              const last = i === profile.pipeline.length - 1;
+              return (
+                <li key={stage} className="flex items-center gap-1.5">
+                  <span
+                    className={`pipe-stage rounded-md border px-2 py-1 ${last ? "border-accent bg-accent text-accent-fg" : "border-line-strong text-muted"}`}
+                    style={{ animationDelay: `${i * 0.45}s` }}
+                  >
+                    {stage}
+                  </span>
+                  {!last ? (
+                    <span aria-hidden className="text-accent-ink">
+                      →
+                    </span>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ol>
+
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{profile.line}</p>
 
           <dl className="mt-6 grid max-w-xl grid-cols-[1.35fr_1fr_1fr] divide-x divide-line overflow-hidden rounded-lg border border-line bg-panel">
             {profile.proof.map((p) => (

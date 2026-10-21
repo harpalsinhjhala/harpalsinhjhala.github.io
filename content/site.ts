@@ -14,15 +14,16 @@ export const profile = {
   initials: "HJ",
   title: "AI Driven Analytics & Data Engineer · BI Developer",
   jobTitle: "Senior Data Analyst",
-  // Hero statement: `lead` renders bright, `line` muted beneath it.
-  lead: "I engineer the SQL warehouses, pipelines and dashboards that C-suites run on.",
+  // Hero statement: `lead` renders bright, `pipeline` as a lit-up stack chain, `line` muted beneath.
+  lead: "Raw data in. Boardroom decisions out.",
+  pipeline: ["SQL", "Fabric", "Power BI", "Tableau", "AI", "C-suite decisions"],
   line: "Executive BI for Qatar Insurance Group and Adani Green Energy. SQL validation of US mortgage servicing analytics for Azimuth clients, including Bank of America. An enterprise data warehouse for Kunvarji Group. Accelerated by AI.",
   proof: [
     { value: "2 days → 2 hrs", label: "C-suite reporting" },
     { value: "+15%", label: "brokerage revenue" },
     { value: "1,000+", label: "plants tracked" },
   ],
-  tags: ["SQL", "Data Engineering", "Power BI", "Tableau", "Microsoft Fabric", "Azure", "BFSI", "MENA"],
+  tags: ["Data Engineering", "Azure", "Python", "BFSI", "Insurance", "MENA"],
   location: "Ahmedabad, India · Open to UAE relocation and remote",
   email: "harpalsinhjhala13@gmail.com",
   linkedin: "https://www.linkedin.com/in/harpal-sinh-jhala/",
@@ -479,9 +480,9 @@ export const awards = [
 ];
 
 export const nav = [
+  { href: "#skills", label: "Skills" },
   { href: "#impact", label: "Impact" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];

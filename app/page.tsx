@@ -8,7 +8,7 @@ import { Contact } from "@/components/sections/Contact";
 import { EnterpriseWork } from "@/components/sections/EnterpriseWork";
 import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
 import { Recognition } from "@/components/sections/Recognition";
-import { SkillsSchema } from "@/components/sections/SkillsSchema";
+import { SkillsPack } from "@/components/sections/SkillsPack";
 
 export default function Home() {
   return (
@@ -16,11 +16,11 @@ export default function Home() {
       <Navbar />
       <main id="main">
         <Hero />
+        <SkillsPack />
         <ImpactStrip />
         <ProjectGrid />
         <EnterpriseWork />
         <ExperienceTimeline />
-        <SkillsSchema />
         <AiWorkflow />
         <Recognition />
         <Contact />
