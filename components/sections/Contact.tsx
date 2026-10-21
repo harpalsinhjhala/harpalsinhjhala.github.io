@@ -9,7 +9,7 @@ export function Contact() {
   const img = profile.aboutImage;
   return (
     <section id="contact" aria-labelledby="contact-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
-      <SectionLabel index="08" label="Contact" title="Let's talk about your data." id="contact-title" />
+      <SectionLabel index="07" label="Contact" title="Let's talk about your data." id="contact-title" />
       <Reveal className="panel grid overflow-hidden md:grid-cols-[1fr_320px]">
         <div className="flex flex-col p-6 md:p-10">
           <p className="max-w-xl text-lg leading-relaxed text-muted">{profile.openTo}</p>

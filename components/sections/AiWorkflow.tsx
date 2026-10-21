@@ -8,7 +8,7 @@ const icons: IconName[] = ["compass", "zap", "shield"];
 export function AiWorkflow() {
   return (
     <section aria-labelledby="ai-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
-      <SectionLabel index="06" label="How I work with AI" title="AI drafts. I decide and verify." id="ai-title" />
+      <SectionLabel index="05" label="How I work with AI" title="AI drafts. I decide and verify." id="ai-title" />
       <ol className="grid gap-px overflow-hidden rounded-[14px] border border-line bg-line md:grid-cols-3">
         {aiWorkflow.map((s, i) => (
           <Reveal as="li" key={s.step} className="relative bg-panel p-6">

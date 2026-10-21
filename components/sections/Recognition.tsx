@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 export function Recognition() {
   return (
     <section aria-labelledby="awards-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
-      <SectionLabel index="07" label="Recognition" title="Awards." id="awards-title" />
+      <SectionLabel index="06" label="Recognition" title="Awards." id="awards-title" />
       <ul className="grid gap-4 md:grid-cols-2">
         {awards.map((a, i) => (
           <Reveal as="li" key={a.title} className="panel relative overflow-hidden p-6">

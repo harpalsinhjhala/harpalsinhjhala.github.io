@@ -78,23 +78,84 @@ export const sqlImpact = {
   ],
 };
 
-export type Kpi = {
-  value: number;
+// Impact, grouped by who it was for. Merges the old KPI strip and enterprise work panel.
+// A stat is either a counted number (value) or a short verified fact (text).
+export type ImpactStat = {
+  value?: number;
   prefix?: string;
-  suffix: string;
+  suffix?: string;
+  text?: string;
   label: string;
-  context: string;
-  // "drop" draws a real before/after bar (2 days -> 2 hours); "rise" and "flat" are decorative shapes only.
-  visual: "drop" | "rise" | "flat";
+  // "turnaround" draws the real 48h -> 2h before/after bars.
+  visual?: "turnaround";
 };
 
-export const kpis: Kpi[] = [
-  { value: 90, suffix: "%+", label: "Reporting turnaround cut", context: "2 days to under 2 hours with an automated Power BI to PowerPoint pipeline", visual: "drop" },
-  { value: 14, suffix: "", label: "Executive Power BI reports", context: "For the CFO and C-suite at Qatar Insurance Group", visual: "rise" },
-  { value: 30, suffix: "%", label: "Real estate revenue found in NPAs", context: "Surfaced by a profitability and client segmentation model", visual: "rise" },
-  { value: 15, suffix: "%", label: "Brokerage revenue increase", context: "Driven by inactive account analytics", visual: "rise" },
-  { value: 1000, suffix: "+", label: "Energy plants tracked", context: "Cash flow and operational KPIs for Adani Green Energy", visual: "flat" },
-  { value: 3, suffix: "", label: "Analyst team led", context: "Requirements, sprint planning and Power BI delivery", visual: "rise" },
+export type ClientImpact = {
+  client: string;
+  via?: string;
+  sector: string;
+  stats: ImpactStat[];
+  points: string[];
+  wide?: boolean;
+};
+
+export const clientImpact: ClientImpact[] = [
+  {
+    client: "Qatar Insurance Group",
+    via: "WhiteBlue Cloud Services",
+    sector: "MENA · Insurance",
+    wide: true,
+    stats: [
+      { value: 90, suffix: "%+", label: "Reporting turnaround cut", visual: "turnaround" },
+      { value: 14, label: "C-suite Power BI reports" },
+    ],
+    points: [
+      "Reports for the CFO, Senior VP and C-suite: profitability, claims ratio, loss ratio and disease burden.",
+      "Power BI to PowerPoint automation took a 2 day task to under 2 hours.",
+      "Built to UAE data governance and compliance standards.",
+    ],
+  },
+  {
+    client: "Kunvarji Group",
+    sector: "India · BFSI",
+    wide: true,
+    stats: [
+      { value: 15, prefix: "+", suffix: "%", label: "Brokerage revenue" },
+      { value: 30, suffix: "%", label: "Real estate revenue found in NPAs" },
+      { value: 3, label: "Analyst team led" },
+    ],
+    points: [
+      "Architected the master enterprise data warehouse on SQL Server: views, stored procedures, ETL.",
+      "Inactive account analytics that helped relationship managers win back revenue.",
+    ],
+  },
+  {
+    client: "Adani Green Energy",
+    via: "WhiteBlue Cloud Services",
+    sector: "India · Renewable energy",
+    stats: [{ value: 1000, suffix: "+", label: "Plants on one view" }],
+    points: [
+      "5 Power BI reports on real-time cash flow and operational KPIs.",
+      "One semantic model with drill-through, so KPIs match across every report.",
+    ],
+  },
+  {
+    client: "Bank of America",
+    via: "Azimuth",
+    sector: "US · Mortgage servicing",
+    stats: [{ text: "SQL-verified", label: "Dashboard figures" }],
+    points: [
+      "SQL validation of mortgage servicing analytics for Azimuth clients, including Bank of America.",
+      "Reconciled source data against dashboard outputs to confirm every reported figure.",
+    ],
+  },
+  {
+    client: "Ports efficiency model",
+    via: "WhiteBlue Cloud Services",
+    sector: "Infrastructure",
+    stats: [{ text: "Clearer CAPEX", label: "Planning for senior leadership" }],
+    points: ["Reporting model that reduced CAPEX planning uncertainty for senior leadership."],
+  },
 ];
 
 export type FlowNode = { label: string; detail?: string };
@@ -323,39 +384,6 @@ export const projects: Project[] = [
       ],
       tools: ["SQL", "Power BI", "DAX"],
     },
-  },
-];
-
-export const enterpriseWork = [
-  {
-    client: "Qatar Insurance Group",
-    region: "MENA",
-    points: [
-      "14 executive Power BI reports for the CFO, Senior VP and C-suite: profitability, claims ratio, loss ratio and disease burden.",
-      "Reporting built to UAE data governance and compliance standards.",
-      "Automated Power BI to PowerPoint pipeline cut a 2 day task to under 2 hours.",
-    ],
-  },
-  {
-    client: "Azimuth · Bank of America",
-    region: "US Mortgage Servicing",
-    points: [
-      "SQL validation of mortgage servicing analytics for Azimuth clients, including Bank of America.",
-      "Reconciled source data against dashboard outputs to confirm every reported figure.",
-    ],
-  },
-  {
-    client: "Adani Green Energy",
-    region: "India",
-    points: [
-      "5 Power BI reports tracking real-time cash flow and operational KPIs across 1,000+ plants.",
-      "One semantic model with drill-through views, so KPIs match across every report.",
-    ],
-  },
-  {
-    client: "Ports efficiency model",
-    region: "Infrastructure",
-    points: ["Reporting model that reduced CAPEX planning uncertainty for senior leadership."],
   },
 ];
 
