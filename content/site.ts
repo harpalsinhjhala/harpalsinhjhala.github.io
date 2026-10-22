@@ -1,7 +1,7 @@
 // All site copy lives here. Edit text in this file; components only render it.
 
 export const site = {
-  url: "https://harpalsinhjhala13.github.io",
+  url: "https://harpalsinhjhala.github.io",
   title: "Harpal Sinh Jhala | AI Driven Analytics Engineer and BI Developer",
   description:
     "Harpal Sinh Jhala, AI driven Analytics Engineer and BI Developer. Power BI, SQL and Microsoft Fabric for insurance, brokerage and BFSI teams in MENA and India.",
@@ -30,7 +30,7 @@ export const profile = {
   location: "Ahmedabad, India · Open to UAE relocation and remote",
   email: "harpalsinhjhala13@gmail.com",
   linkedin: "https://www.linkedin.com/in/harpal-sinh-jhala/",
-  github: "https://github.com/harpalsinhjhala13",
+  github: "https://github.com/harpalsinhjhala",
   openTo: "Open to Senior BI, Analytics Engineering and Data Analyst roles in UAE, India remote and Ahmedabad.",
   heroImage: {
     src: "/images/hero",
@@ -192,8 +192,8 @@ export const projects: Project[] = [
     stack: ["Microsoft Fabric", "OneLake", "T-SQL", "Python", "D3.js", "Claude Code"],
     outcome:
       "Fabric lakehouse to an interactive D3 dashboard. Analysis, design and code produced by Claude Code agents that I directed and reviewed.",
-    embed: { kind: "web", url: "https://harpalsinhjhala13.github.io/ai-sales-analytics/", title: "AI Sales Analytics live dashboard" },
-    repo: "https://github.com/harpalsinhjhala13/ai-sales-analytics",
+    embed: { kind: "web", url: "https://harpalsinhjhala.github.io/ai-sales-analytics/", title: "AI Sales Analytics live dashboard" },
+    repo: "https://github.com/harpalsinhjhala/ai-sales-analytics",
     preview: "/projects/ai-sales",
     previewSize: [1440, 810],
     previewAlt: "AI Sales Analytics dashboard with KPI cards, monthly trend and country by product heatmap",
@@ -237,7 +237,7 @@ export const projects: Project[] = [
       url: "https://app.powerbi.com/view?r=eyJrIjoiZjk1Zjk0NWUtMmUxYS00OGY4LTkxMmEtNGRjNzdjYmJjM2JhIiwidCI6IjQ5ZTI0NzNlLWI1OWQtNGE0ZS05NmU5LTdmYjQ3NDY3MjNhMyJ9",
       title: "Car Theft Analytics Power BI report",
     },
-    repo: "https://github.com/harpalsinhjhala13/AI-Car-Theft-Analytics",
+    repo: "https://github.com/harpalsinhjhala/AI-Car-Theft-Analytics",
     preview: "/projects/car-theft",
     previewSize: [1920, 1080],
     previewAlt: "Car theft analytics overview page with KPI cards, daily trend and region treemap",

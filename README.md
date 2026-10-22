@@ -22,10 +22,10 @@ That serves `./out` on http://localhost:4173 with gzip, like GitHub Pages.
 
 ## Deploy to GitHub Pages
 
-1. Create a public repo named `harpalsinhjhala13.github.io`.
+1. Create a public repo named `harpalsinhjhala.github.io`.
 2. Push this folder to its `main` branch.
 3. In the repo, open **Settings → Pages** and set **Source** to **GitHub Actions**.
-4. Every push to `main` runs `.github/workflows/deploy.yml` and publishes `out/` to https://harpalsinhjhala13.github.io.
+4. Every push to `main` runs `.github/workflows/deploy.yml` and publishes `out/` to https://harpalsinhjhala.github.io.
 
 Your existing project site at `/ai-sales-analytics/` keeps working alongside it.
 
