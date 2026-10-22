@@ -28,7 +28,7 @@ export const profile = {
   ],
   tags: ["Data Engineering", "Azure", "Python", "BFSI", "Insurance", "MENA"],
   location: "Ahmedabad, India · Open to UAE relocation and remote",
-  email: "harpalsinhjhala13@gmail.com",
+  email: "harpalsinh13@gmail.com",
   linkedin: "https://www.linkedin.com/in/harpal-sinh-jhala/",
   github: "https://github.com/harpalsinhjhala",
   openTo: "Open to Senior BI, Analytics Engineering and Data Analyst roles in UAE, India remote and Ahmedabad.",
