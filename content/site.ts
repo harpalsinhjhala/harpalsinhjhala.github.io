@@ -27,7 +27,7 @@ export const profile = {
     { value: "1,000+", label: "Energy plants on one view", context: "Adani Green Energy" },
   ],
   tags: ["Data Engineering", "Azure", "Python", "BFSI", "Insurance", "MENA"],
-  location: "Ahmedabad, India", // · Open to UAE relocation and remote", //
+  location: "Ahmedabad, India",
   email: "harpalsinh13@gmail.com",
   linkedin: "https://www.linkedin.com/in/harpal-sinh-jhala/",
   github: "https://github.com/harpalsinhjhala",
