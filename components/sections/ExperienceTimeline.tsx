@@ -3,17 +3,11 @@ import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-// A career overview bar (desktop) above a vertical timeline of readable role cards.
-const AXIS_START = 2018;
-const AXIS_END = 2027;
+// Career path overview (desktop) above a vertical timeline of readable role cards.
 
 function toMonths(ym: string) {
   const [y, m] = ym.split("-").map(Number);
   return y * 12 + (m - 1);
-}
-
-function pct(months: number) {
-  return ((months / 12 - AXIS_START) / (AXIS_END - AXIS_START)) * 100;
 }
 
 function duration(r: Role, now: number) {
@@ -29,7 +23,6 @@ function shortOrg(org: string) {
 
 export function ExperienceTimeline() {
   const now = toMonths(site.lastUpdated.slice(0, 7));
-  const years = Array.from({ length: AXIS_END - AXIS_START + 1 }, (_, i) => AXIS_START + i);
   const work = experience.filter((r) => r.kind === "work");
   const edu = experience.filter((r) => r.kind === "education");
 
@@ -37,35 +30,39 @@ export function ExperienceTimeline() {
     <section id="experience" aria-labelledby="experience-title" className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
       <SectionLabel index="04" label="Experience" title="Four years across insurance, mortgage servicing, brokerage, energy and edtech." id="experience-title" />
 
-      {/* Overview: where each role sits in time */}
-      <div aria-hidden className="panel mb-8 hidden px-6 pb-5 pt-4 md:block">
-        <div className="relative h-4">
-          {years.map((y) => (
-            <span key={y} className="absolute -translate-x-1/2 font-mono text-[10px] text-faint" style={{ left: `${pct(y * 12)}%` }}>
-              {y}
-            </span>
-          ))}
-        </div>
-        <div className="relative mt-2 h-16">
-          {years.map((y) => (
-            <span key={y} className="absolute inset-y-0 w-px bg-line" style={{ left: `${pct(y * 12)}%` }} />
-          ))}
-          {experience.map((r) => {
-            const s = toMonths(r.start);
-            const e = r.end ? toMonths(r.end) : now;
-            const isEdu = r.kind === "education";
-            return (
-              <div
-                key={r.org}
-                className={`absolute ${isEdu ? "top-9" : "top-1"}`}
-                style={{ left: `${pct(s)}%`, width: `${pct(e) - pct(s)}%` }}
-              >
-                <div className={`h-2 rounded-full ${isEdu ? "border border-line-strong bg-panel-2" : r.end ? "bg-accent/60" : "bg-accent"}`} />
-                <p className={`mt-1.5 truncate font-mono text-[11px] ${isEdu ? "text-faint" : "text-fg"}`}>{shortOrg(r.org)}</p>
+      {/* Overview: the career path as equal steps, oldest to newest. */}
+      <div aria-hidden className="mb-8 hidden md:block">
+        <ol className="grid grid-cols-3 gap-3">
+          {[...work].reverse().map((r, i, arr) => (
+            <li key={r.org} className="relative">
+              <div className={`panel h-full px-5 py-4 ${!r.end ? "border-accent/50" : ""}`}>
+                <div className="flex items-center justify-between font-mono text-[11px] text-faint">
+                  <span>
+                    {r.startLabel.slice(-4)} – {r.end ? r.endLabel.slice(-4) : "now"}
+                  </span>
+                  {!r.end ? (
+                    <span className="flex items-center gap-1.5 text-pos">
+                      <span className="pulse-dot size-1.5 rounded-full bg-pos" />
+                      current
+                    </span>
+                  ) : (
+                    <span>{duration(r, now)}</span>
+                  )}
+                </div>
+                <p className="mt-2 font-display text-lg font-medium tracking-tight text-fg">{r.role}</p>
+                <p className="text-sm text-muted">{shortOrg(r.org)}</p>
+                <div className="mt-3 h-1 overflow-hidden rounded-full bg-panel-2">
+                  <div className={`h-full rounded-full ${r.end ? "bg-accent/60" : "bg-accent"}`} style={{ width: `${((i + 1) / arr.length) * 100}%` }} />
+                </div>
               </div>
-            );
-          })}
-        </div>
+              {i < arr.length - 1 ? (
+                <span className="absolute -right-3 top-1/2 z-10 grid size-6 -translate-y-1/2 place-items-center rounded-full border border-line-strong bg-bg text-accent-ink">
+                  <Icon name="arrowRight" className="size-3" />
+                </span>
+              ) : null}
+            </li>
+          ))}
+        </ol>
       </div>
 
       <ol className="space-y-6">
