@@ -27,11 +27,11 @@ export const profile = {
     { value: "1,000+", label: "Energy plants on one view", context: "Adani Green Energy" },
   ],
   tags: ["Data Engineering", "Azure", "Python", "BFSI", "Insurance", "MENA"],
-  location: "Ahmedabad, India · Open to UAE relocation and remote",
+  location: "Ahmedabad, India", // · Open to UAE relocation and remote", //
   email: "harpalsinh13@gmail.com",
   linkedin: "https://www.linkedin.com/in/harpal-sinh-jhala/",
   github: "https://github.com/harpalsinhjhala",
-  openTo: "Open to Senior BI, Analytics Engineering and Data Analyst roles in UAE, India remote and Ahmedabad.",
+  openTo: "Open to Senior BI, Analytics Engineering and Data Analyst roles.",
   heroImage: {
     src: "/images/hero",
     alt: "Illustrated portrait of Harpal Sinh Jhala holding a laptop of dashboards and a coffee, in front of SQL and financial charts",
