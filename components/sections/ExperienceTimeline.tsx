@@ -36,21 +36,18 @@ export function ExperienceTimeline() {
           {[...work].reverse().map((r, i, arr) => (
             <li key={r.org} className="relative">
               <div className={`panel h-full px-5 py-4 ${!r.end ? "border-accent/50" : ""}`}>
-                <div className="flex items-center justify-between font-mono text-[11px] text-faint">
-                  <span>
-                    {r.startLabel.slice(-4)} – {r.end ? r.endLabel.slice(-4) : "now"}
-                  </span>
+                <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.12em] text-faint">
+                  <span>{r.focus}</span>
                   {!r.end ? (
                     <span className="flex items-center gap-1.5 text-pos">
                       <span className="pulse-dot size-1.5 rounded-full bg-pos" />
                       current
                     </span>
-                  ) : (
-                    <span>{duration(r, now)}</span>
-                  )}
+                  ) : null}
                 </div>
                 <p className="mt-2 font-display text-lg font-medium tracking-tight text-fg">{r.role}</p>
                 <p className="text-sm text-muted">{shortOrg(r.org)}</p>
+                <p className="mt-2 text-sm font-medium text-pos">{r.headline}</p>
                 <div className="mt-3 h-1 overflow-hidden rounded-full bg-panel-2">
                   <div className={`h-full rounded-full ${r.end ? "bg-accent/60" : "bg-accent"}`} style={{ width: `${((i + 1) / arr.length) * 100}%` }} />
                 </div>

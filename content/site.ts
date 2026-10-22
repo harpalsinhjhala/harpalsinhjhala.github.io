@@ -395,6 +395,8 @@ export type Role = {
   startLabel: string;
   endLabel: string;
   summary: string; // one line: what the job was
+  focus?: string; // sector line on the career-path overview
+  headline?: string; // signature result on the career-path overview
   clients?: string[];
   // Each highlight leads with its result so the eye lands on the number first.
   highlights: { result: string; detail: string }[];
@@ -411,6 +413,8 @@ export const experience: Role[] = [
     end: null,
     startLabel: "Mar 2025",
     endLabel: "Present",
+    focus: "Insurance · Energy · Mortgage",
+    headline: "14 C-suite reports for QIC",
     summary: "Executive BI and data validation for MENA insurance, US mortgage servicing, renewable energy and ports clients.",
     clients: ["Qatar Insurance Group", "Bank of America (via Azimuth)", "Adani Green Energy"],
     highlights: [
@@ -430,6 +434,8 @@ export const experience: Role[] = [
     end: "2025-03",
     startLabel: "Feb 2024",
     endLabel: "Mar 2025",
+    focus: "BFSI · Real estate",
+    headline: "+15% brokerage revenue",
     summary: "Data warehouse and BFSI reporting across stock brokerage, real estate and insurance.",
     highlights: [
       { result: "Master EDW", detail: "Led architecture of the enterprise data warehouse: tables, views, stored procedures and ETL on SQL Server." },
@@ -448,6 +454,8 @@ export const experience: Role[] = [
     end: "2023-09",
     startLabel: "Sep 2022",
     endLabel: "Sep 2023",
+    focus: "Edtech",
+    headline: "Automated academic reporting",
     summary: "Reporting and data quality for the Academics department.",
     highlights: [
       { result: "Automated", detail: "Power BI reports and reporting pipelines that replaced manual reporting across business units." },
