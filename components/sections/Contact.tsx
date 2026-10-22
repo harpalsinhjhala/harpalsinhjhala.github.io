@@ -57,7 +57,7 @@ export function Contact() {
             height={1000}
             sizes="320px"
             className="absolute inset-0"
-            imgClassName="h-full w-full object-cover saturate-[0.85]"
+            imgClassName="h-full w-full object-cover object-[50%_62%]"
           />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-panel/40 to-transparent" />
         </div>

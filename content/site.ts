@@ -38,7 +38,7 @@ export const profile = {
     width: 1024,
     height: 1280,
   },
-  aboutImage: { src: "/images/about", alt: "Harpal Sinh Jhala on a clifftop above a beach in Goa", width: 1500, height: 2000 },
+  aboutImage: { src: "/images/about", alt: "Harpal Sinh Jhala on a clifftop in Goa, looking out over the sea at sunset", width: 1500, height: 2000 },
 };
 
 // Rows returned by the hero SQL console: what was delivered, to whom, and what it changed.
