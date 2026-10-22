@@ -489,10 +489,33 @@ export const skills: { table: string; label: string; columns: string[] }[] = [
 
 export const domains = ["Insurance", "Mortgage Servicing", "Stock Brokerage", "Real Estate", "Banking", "Energy"];
 
+// The working loop. Snippets are illustrative of each step, not claims about a specific project.
 export const aiWorkflow = [
-  { step: "Direct", text: "I define the business question and the data model." },
-  { step: "Accelerate", text: "AI agents draft the SQL, DAX, pipelines and UI." },
-  { step: "Verify", text: "I check every number against source, because executives act on it." },
+  {
+    step: "Direct",
+    owner: "me",
+    text: "I define the business question, the grain and the data model before any code exists.",
+    snippet: ["-- question: which clients went inactive?", "-- grain: one row per client per month", "-- model: star schema, 1 fact + dims"],
+  },
+  {
+    step: "Accelerate",
+    owner: "ai agents",
+    text: "AI agents draft the SQL, DAX, pipelines and report UI in minutes, not days.",
+    snippet: ["> claude: draft MoM % measure in DAX", "> claude: build the Python export", "✓ drafts ready for review"],
+  },
+  {
+    step: "Verify",
+    owner: "me",
+    text: "I reconcile every number against source, because executives act on it.",
+    snippet: ["SELECT SUM(amount) FROM source;", "-- compare with dashboard total", "✓ match, or back to drafting"],
+  },
+];
+
+// Work delivered with this loop.
+export const aiProof = [
+  { label: "AI Sales Analytics", detail: "Fabric to D3, built by Claude Code agents I directed", href: "/projects/ai-sales-analytics/" },
+  { label: "Car Theft Analytics + AI", detail: "My model and DAX, report built by Claude Code", href: "/projects/car-theft-analytics/" },
+  { label: "Azimuth · Bank of America", detail: "AI-accelerated SQL, every output validated" },
 ];
 
 export const awards = [
