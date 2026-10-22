@@ -24,7 +24,7 @@ export const profile = {
   proof: [
     { value: "2 days → 2 hrs", label: "Reporting turnaround", context: "Qatar Insurance Group" },
     { value: "+15%", label: "Brokerage revenue", context: "Kunvarji Group" },
-    { value: "1,000+", label: "Plants on one view", context: "Adani Green Energy" },
+    { value: "1,000+", label: "Energy plants on one view", context: "Adani Green Energy" },
   ],
   tags: ["Data Engineering", "Azure", "Python", "BFSI", "Insurance", "MENA"],
   location: "Ahmedabad, India · Open to UAE relocation and remote",
@@ -68,7 +68,7 @@ export const sqlImpact = {
     {
       client: "Adani Green Energy",
       delivered: "5 Power BI reports on cash flow and operational KPIs",
-      impact: "1,000+ plants",
+      impact: "1,000+ energy plants",
     },
     {
       client: "BYJU'S",
@@ -133,7 +133,7 @@ export const clientImpact: ClientImpact[] = [
     client: "Adani Green Energy",
     via: "WhiteBlue Cloud Services",
     sector: "India · Renewable energy",
-    stats: [{ value: 1000, suffix: "+", label: "Plants on one view" }],
+    stats: [{ value: 1000, suffix: "+", label: "Energy plants on one view" }],
     points: [
       "5 Power BI reports on real-time cash flow and operational KPIs.",
       "One semantic model with drill-through, so KPIs match across every report.",
@@ -420,7 +420,7 @@ export const experience: Role[] = [
     highlights: [
       { result: "14 C-suite reports", detail: "Power BI for the CFO, Senior VP and C-suite at QIC: profitability, claims, loss ratio, disease burden. Built to UAE data governance standards." },
       { result: "2 days → 2 hrs", detail: "Automated the Power BI to PowerPoint client reporting pipeline, a 90%+ turnaround cut." },
-      { result: "1,000+ plants", detail: "5 Power BI reports tracking real-time cash flow and operational KPIs for Adani Green Energy." },
+      { result: "1,000+ energy plants", detail: "5 Power BI reports tracking real-time cash flow and operational KPIs for Adani Green Energy." },
       { result: "BofA figures verified", detail: "SQL validation and reconciliation of US mortgage servicing dashboards for Azimuth clients, including Bank of America." },
     ],
     stack: ["SQL", "Power BI", "DAX", "Power Query", "Azure Data Lake"],
