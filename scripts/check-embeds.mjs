@@ -3,7 +3,7 @@
 import { chromium } from "playwright";
 import { serve } from "./serve.mjs";
 
-const slugs = ["ai-sales-analytics", "real-estate-brokerage", "stock-brokerage", "car-theft-analytics", "hr-analytics"];
+const slugs = ["ai-sales-analytics", "blinkit-pulse-analytics", "real-estate-brokerage", "stock-brokerage", "car-theft-analytics", "hr-analytics"];
 const server = await serve("out", 4179);
 const browser = await chromium.launch();
 let ok = true;

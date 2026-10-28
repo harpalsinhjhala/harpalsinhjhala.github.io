@@ -78,7 +78,7 @@ export function AiWorkflow() {
 
       <div className="mt-8">
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-faint">Built this way</p>
-        <ul className="mt-3 grid gap-3 md:grid-cols-3">
+        <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {aiProof.map((p) => {
             const body = (
               <>

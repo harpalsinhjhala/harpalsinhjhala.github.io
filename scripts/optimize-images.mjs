@@ -12,6 +12,7 @@ const jobs = [
   { src: "public/projects/raw/real-estate-pbi.png", out: "public/projects/real-estate", widths: [800, 1600], extract: { left: 0, top: 0, width: 1600, height: 740 } },
   { src: "public/projects/raw/stock-brokerage-pbi.png", out: "public/projects/stock-brokerage", widths: [800, 1600], extract: { left: 0, top: 0, width: 1600, height: 740 } },
   { src: "public/projects/raw/car-1-overview.png", out: "public/projects/car-theft", widths: [800, 1600] },
+  { src: "public/projects/raw/blinkit-1-overview.png", out: "public/projects/blinkit", widths: [800, 1600] },
   { src: "public/projects/raw/hr-analytics-pbi.png", out: "public/projects/hr-analytics", widths: [800, 1600], extract: { left: 0, top: 0, width: 1600, height: 740 } },
 ];
 
