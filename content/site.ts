@@ -167,7 +167,7 @@ export type Project = {
   stack: string[];
   outcome: string;
   featured?: boolean;
-  embed: { kind: "powerbi" | "web"; url: string; title: string };
+  embed: { kind: "powerbi" | "web" | "app"; url: string; title: string };
   repo?: string;
   preview: string; // base path without extension, see scripts/optimize-images.mjs
   previewSize: [number, number];
@@ -223,6 +223,53 @@ export const projects: Project[] = [
         "Shows the way I work: AI speeds up delivery, and I stay accountable for every number.",
       ],
       tools: ["Microsoft Fabric", "OneLake", "SQL analytics endpoint", "T-SQL", "Python", "D3.js", "Claude Code"],
+    },
+  },
+  {
+    slug: "jhala-ai-chat-with-power-bi",
+    title: "Jhala AI: Chat with Power BI",
+    domain: "Quick Commerce · AI + Power BI",
+    stack: ["Power BI", "DAX", "MCP", "Python", "FastAPI", "Groq LLM"],
+    outcome:
+      "Ask the Blinkit Pulse dashboard questions in plain English. My MCP server turns them into DAX on the published Power BI model, so every answer comes from validated measures, not the LLM's memory.",
+    embed: {
+      kind: "app",
+      url: "https://blinkit-ai-analyst.onrender.com",
+      title: "Jhala AI live demo",
+    },
+    repo: "https://github.com/harpalsinhjhala/blinkit-ai-analyst",
+    preview: "/projects/jhala-ai",
+    previewSize: [1600, 900],
+    previewAlt: "Blinkit Pulse Power BI dashboard on the left and the Jhala AI chat on the right answering GMV by category, highest first",
+    caseStudy: {
+      problem:
+        "Business users want answers, not filters. Can a chatbot answer questions about a Power BI dashboard without ever making up a number?",
+      data: [
+        "The published Blinkit Pulse semantic model: 5,000 synthetic Blinkit orders (Kaggle, public), Mar 2023 to Nov 2024.",
+        "A rules file of 43 curated measures and 23 fields with formats, warnings and suggested questions.",
+        "Queried live through the Power BI executeQueries API with a service principal; the dashboard is embedded with a view-only token, so visitors don't sign in.",
+      ],
+      approach: [
+        "MCP server in Python with tools to describe the model, list values and get measures; free-form DAX is a flagged fallback only.",
+        "The LLM (Groq, tool calling) only picks measures and fields from the menu. The server writes the DAX, runs it and works out highest / lowest itself, so the AI never compares numbers by eye.",
+        "Warnings when a field isn't linked to a measure (e.g. marketing spend by product category).",
+        "FastAPI web app: embedded 4-page dashboard on the left, chat on the right, Plotly charts, tabs on mobile. Falls back to a second model if the main one's daily quota runs out.",
+        "Built with Claude Code under my direction; I own the model, the rules and every number.",
+      ],
+      flow: [
+        { label: "Question", detail: "plain English" },
+        { label: "LLM tool calling", detail: "Groq" },
+        { label: "MCP server", detail: "43 measures · 23 fields" },
+        { label: "DAX on Power BI", detail: "executeQueries API" },
+        { label: "Answer", detail: "text · table · chart" },
+      ],
+      flowNote: "Every answer has a \"How I got this\" panel listing the exact MCP queries.",
+      impact: [
+        "Answers match the dashboard: ₹1.10 Cr GMV from 5,000 orders, 69.4% on-time delivery, Email the best channel at 2.05x ROAS.",
+        "No hallucinated numbers: the LLM chooses what to ask; Power BI does the maths.",
+        "Works with any Power BI model: swap the rules file to point Jhala AI at a different dashboard.",
+      ],
+      tools: ["Power BI Service", "DAX", "Model Context Protocol (MCP)", "Python", "FastAPI", "Groq LLM", "Plotly", "Render", "Claude Code"],
     },
   },
   {

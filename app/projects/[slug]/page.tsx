@@ -110,7 +110,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </Block>
         <section id="live" className="scroll-mt-24 border-t border-line py-8 md:py-10">
           <h2 className="mb-5 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
-            <span className="text-accent-ink">04</span> <span className="text-faint">/</span> Live dashboard
+            <span className="text-accent-ink">04</span> <span className="text-faint">/</span> {p.embed.kind === "app" ? "Live demo" : "Live dashboard"}
           </h2>
           <LiveEmbed project={p} />
         </section>

@@ -7,12 +7,15 @@ import { Picture } from "@/components/ui/Picture";
 
 // Click-to-load embed. Nothing from Power BI is requested until the button is pressed.
 // Under 768px the iframe is never offered for Power BI; the preview links out to the full report instead.
+// "app" embeds (a free-tier web app that can take ~50s to wake) are never framed: the preview links out to the live demo.
 export function LiveEmbed({ project }: { project: Project }) {
   const [state, setState] = useState<"idle" | "loading" | "ready">("idle");
   const frameWrap = useRef<HTMLDivElement>(null);
   const { embed } = project;
   const isPbi = embed.kind === "powerbi";
-  const openLabel = isPbi ? "Open in Power BI" : "Open full dashboard";
+  const isApp = embed.kind === "app";
+  const openLabel = isPbi ? "Open in Power BI" : isApp ? "Open live demo" : "Open full dashboard";
+  const kindLabel = isPbi ? "power bi" : isApp ? "ai chat app" : "d3 dashboard";
 
   function fullscreen() {
     const el = frameWrap.current;
@@ -26,7 +29,7 @@ export function LiveEmbed({ project }: { project: Project }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-4 py-2.5">
         <p className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
           <span className={`size-1.5 rounded-full ${state === "ready" ? "pulse-dot bg-pos" : "bg-line-strong"}`} aria-hidden />
-          {state === "ready" ? "live" : state === "loading" ? "connecting" : "preview"} · {isPbi ? "power bi" : "d3 dashboard"}
+          {state === "ready" ? "live" : state === "loading" ? "connecting" : "preview"} · {kindLabel}
         </p>
         <div className="flex items-center gap-2">
           {state !== "idle" ? (
@@ -65,6 +68,24 @@ export function LiveEmbed({ project }: { project: Project }) {
               imgClassName="h-full w-full object-cover object-left-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-bg/85 via-bg/30 to-transparent" />
+            {isApp ? (
+              <div className="absolute inset-0 flex flex-col items-center justify-end gap-2 p-4 md:justify-center">
+                <a
+                  href={embed.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-medium text-accent-fg shadow-lg transition-transform hover:-translate-y-px md:w-auto md:py-3"
+                >
+                  <Icon name="play" />
+                  Launch live demo
+                  <Icon name="arrowUpRight" />
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+                <p className="rounded-md bg-bg/80 px-2.5 py-1 text-center text-xs text-muted">
+                  Free hosting: the first load can take about 50 seconds while the server wakes up.
+                </p>
+              </div>
+            ) : (
             <div className="absolute inset-0 flex items-end justify-center p-4 md:items-center">
               {/* Desktop and tablet: load in place */}
               <button
@@ -87,6 +108,7 @@ export function LiveEmbed({ project }: { project: Project }) {
                 <span className="sr-only">(opens in a new tab)</span>
               </a>
             </div>
+            )}
           </>
         ) : (
           <>
