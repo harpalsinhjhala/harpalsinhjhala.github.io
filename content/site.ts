@@ -273,51 +273,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "blinkit-pulse-analytics",
-    title: "Blinkit Pulse Analytics",
-    domain: "Quick Commerce · Power BI",
-    stack: ["Power BI", "DAX", "Power Query", "Python", "Claude Code"],
-    outcome:
-      "Quick-commerce analytics on 5,000 Blinkit sample orders: sales, the 15-minute delivery promise, customer experience and marketing ROAS, on a star schema with 44 DAX measures in ₹ lakh / crore.",
-    embed: {
-      kind: "powerbi",
-      url: "https://app.powerbi.com/view?r=eyJrIjoiOWE5ZmZiOWYtNDY2My00YmM5LTk3MGEtOTllZDJmOWQ5NzFhIiwidCI6IjQ5ZTI0NzNlLWI1OWQtNGE0ZS05NmU5LTdmYjQ3NDY3MjNhMyJ9",
-      title: "Blinkit Pulse Analytics Power BI report",
-    },
-    repo: "https://github.com/harpalsinhjhala/blinkit-pulse-analytics",
-    preview: "/projects/blinkit",
-    previewSize: [3510, 1506],
-    previewAlt: "Blinkit Pulse overview page with GMV, orders, AOV, margin, on-time delivery and rating KPIs, monthly trend and GMV by category",
-    caseStudy: {
-      problem:
-        "Where does revenue come from, how far is delivery from the 15-minute promise, how satisfied are customers, and does marketing pay back?",
-      data: [
-        "Blinkit Sales Dataset (Kaggle, public, synthetic): 5,000 orders, 16 Mar 2023 to 4 Nov 2024.",
-        "9 raw CSVs prepared in Python into a star schema: Orders, Marketing and Inventory facts; Date, Product and Customer dimensions.",
-        "Personal data dropped, source quirks fixed (actual delivery time recomputed, delay reasons kept only for late orders).",
-      ],
-      approach: [
-        "Me: semantic model, 44 DAX measures in 8 folders, Indian number formats (₹1.10 Cr / ₹5.48 L), and every headline measure reconciled against an independent pandas calculation.",
-        "Claude Code: wireframe, report layout and build automation, reviewed and published by me.",
-        "4 pages (Overview, Delivery, Customers, Marketing), one insight per chart, in Blinkit's own palette.",
-      ],
-      flow: [
-        { label: "9 raw CSVs", detail: "Kaggle sample" },
-        { label: "Python prep", detail: "pandas · cleaning" },
-        { label: "Star schema", detail: "3 facts · 3 dims" },
-        { label: "44 DAX measures", detail: "₹ lakh / crore" },
-        { label: "4-page report", detail: "Layout by Claude Code" },
-      ],
-      flowNote: "I own the model and the numbers. Claude Code built the report layout under review.",
-      impact: [
-        "₹1.10 Cr GMV from 5,000 orders at ₹2,202 average order value, 27.6% gross margin.",
-        "Only 69.4% of orders arrive on time: average delivery 19.4 min against a 15-min promise.",
-        "₹1.63 Cr ad spend returned ₹3.22 Cr (ROAS 1.97x); Email is the best channel at 2.05x.",
-      ],
-      tools: ["Power BI Desktop", "PBIP / TMDL", "DAX", "Power Query (M)", "Python (pandas)", "Claude Code"],
-    },
-  },
-  {
     slug: "car-theft-analytics",
     title: "Car Theft Analytics + AI",
     domain: "Public Safety · AI-built report",
@@ -360,6 +315,51 @@ export const projects: Project[] = [
         "Only 4.2% of stolen vehicles are luxury makes. Toyota, stationwagons and silver cars lead.",
       ],
       tools: ["Power BI Desktop", "PBIP / TMDL", "Power Query (M)", "DAX", "Claude Code"],
+    },
+  },
+  {
+    slug: "blinkit-pulse-analytics",
+    title: "Blinkit Pulse Analytics",
+    domain: "Quick Commerce · Power BI",
+    stack: ["Power BI", "DAX", "Power Query", "Python", "Claude Code"],
+    outcome:
+      "Quick-commerce analytics on 5,000 Blinkit sample orders: sales, the 15-minute delivery promise, customer experience and marketing ROAS, on a star schema with 44 DAX measures in ₹ lakh / crore.",
+    embed: {
+      kind: "powerbi",
+      url: "https://app.powerbi.com/view?r=eyJrIjoiOWE5ZmZiOWYtNDY2My00YmM5LTk3MGEtOTllZDJmOWQ5NzFhIiwidCI6IjQ5ZTI0NzNlLWI1OWQtNGE0ZS05NmU5LTdmYjQ3NDY3MjNhMyJ9",
+      title: "Blinkit Pulse Analytics Power BI report",
+    },
+    repo: "https://github.com/harpalsinhjhala/blinkit-pulse-analytics",
+    preview: "/projects/blinkit",
+    previewSize: [3510, 1506],
+    previewAlt: "Blinkit Pulse overview page with GMV, orders, AOV, margin, on-time delivery and rating KPIs, monthly trend and GMV by category",
+    caseStudy: {
+      problem:
+        "Where does revenue come from, how far is delivery from the 15-minute promise, how satisfied are customers, and does marketing pay back?",
+      data: [
+        "Blinkit Sales Dataset (Kaggle, public, synthetic): 5,000 orders, 16 Mar 2023 to 4 Nov 2024.",
+        "9 raw CSVs prepared in Python into a star schema: Orders, Marketing and Inventory facts; Date, Product and Customer dimensions.",
+        "Personal data dropped, source quirks fixed (actual delivery time recomputed, delay reasons kept only for late orders).",
+      ],
+      approach: [
+        "Me: semantic model, 44 DAX measures in 8 folders, Indian number formats (₹1.10 Cr / ₹5.48 L), and every headline measure reconciled against an independent pandas calculation.",
+        "Claude Code: wireframe, report layout and build automation, reviewed and published by me.",
+        "4 pages (Overview, Delivery, Customers, Marketing), one insight per chart, in Blinkit's own palette.",
+      ],
+      flow: [
+        { label: "9 raw CSVs", detail: "Kaggle sample" },
+        { label: "Python prep", detail: "pandas · cleaning" },
+        { label: "Star schema", detail: "3 facts · 3 dims" },
+        { label: "44 DAX measures", detail: "₹ lakh / crore" },
+        { label: "4-page report", detail: "Layout by Claude Code" },
+      ],
+      flowNote: "I own the model and the numbers. Claude Code built the report layout under review.",
+      impact: [
+        "₹1.10 Cr GMV from 5,000 orders at ₹2,202 average order value, 27.6% gross margin.",
+        "Only 69.4% of orders arrive on time: average delivery 19.4 min against a 15-min promise.",
+        "₹1.63 Cr ad spend returned ₹3.22 Cr (ROAS 1.97x); Email is the best channel at 2.05x.",
+      ],
+      tools: ["Power BI Desktop", "PBIP / TMDL", "DAX", "Power Query (M)", "Python (pandas)", "Claude Code"],
     },
   },
   {
